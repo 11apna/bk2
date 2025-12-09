@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BK REPORTS™ - Premium Cricket Predictions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(rgba(76, 0, 130, 0.85), rgba(76, 0, 130, 0.9)), url('https://png.pngtree.com/thumb_back/fw800/background/20190221/ourmid/pngtree-modernization-simple-abstract-innovation-image_37476.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .profile-container {
+            margin-bottom: 30px;
+        }
+        
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 5px solid #8A2BE2;
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 0 25px rgba(138, 43, 226, 0.7);
+        }
+        
+        .name {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+            text-shadow: 0 0 15px rgba(138, 43, 226, 0.8);
+            letter-spacing: 1px;
+        }
+        
+        .trademark {
+            font-size: 1.5rem;
+            vertical-align: super;
+            color: #FFD700;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #e0e0ff;
+            font-weight: 300;
+        }
+        
+        .highlight {
+            color: #FFD700;
+            font-weight: 600;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(138, 43, 226, 0.2);
+            border-radius: 15px;
+        }
+        
+        .stat-item {
+            margin: 10px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #FFD700;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: #d0d0ff;
+        }
+        
+        .features {
+            text-align: left;
+            margin: 30px 0;
+            padding: 0 20px;
+        }
+        
+        .feature-item {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .feature-item i {
+            color: #FFD700;
+            position: absolute;
+            left: 0;
+            top: 5px;
+        }
+        
+        .btn-container {
+            margin: 40px 0 20px;
+        }
+        
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0088cc, #005c8a);
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 18px 40px;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(0, 136, 204, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .telegram-btn i {
+            font-size: 2rem;
+            margin-right: 15px;
+        }
+        
+        .telegram-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 136, 204, 0.6);
+            background: linear-gradient(135deg, #0099e6, #006da4);
+        }
+        
+        .telegram-btn:active {
+            transform: translateY(0);
+        }
+        
+        .disclaimer {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-top: 30px;
+            padding: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .countdown {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            display: none;
+        }
+        
+        .countdown-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #FFD700;
+        }
+        
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .countdown-item {
+            background: rgba(138, 43, 226, 0.3);
+            padding: 10px;
+            border-radius: 8px;
+            min-width: 70px;
+        }
+        
+        .countdown-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #FFD700;
+        }
+        
+        .countdown-label {
+            font-size: 0.8rem;
+            color: #d0d0ff;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 20px;
+            }
+            
+            .name {
+                font-size: 2.2rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .telegram-btn {
+                font-size: 1.3rem;
+                padding: 16px 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .name {
+                font-size: 1.8rem;
+            }
+            
+            .stats {
+                flex-direction: column;
+            }
+            
+            .telegram-btn {
+                font-size: 1.2rem;
+                padding: 14px 25px;
+            }
+        }
+        
+        /* Animation for button to attract attention */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container fade-in">
+        <div class="profile-container">
+            <img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/69381ae7da01e_421142a7-f1b3-4b98-9593-bdad2fab5b19.jpeg" alt="BK REPORTS Profile" class="profile-img">
+            <h1 class="name">BK REPORTS<span class="trademark">™</span></h1>
+            <p class="tagline">Premium <span class="highlight">Cricket Predictions</span> with Expert Analysis</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number" id="memberCount">9500+</span>
+                <span class="stat-label">Active Members</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="accuracyRate">92%</span>
+                <span class="stat-label">Prediction Accuracy</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="winRate">85%</span>
+                <span class="stat-label">Winning Rate</span>
+            </div>
+        </div>
+        
+        <div class="features">
+            <h2 style="text-align: center; margin-bottom: 20px; color: #FFD700;">Why Join BK REPORTS™?</h2>
+            <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Expert cricket analysis and match predictions</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Live match updates and in-play predictions</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Exclusive tips for IPL, World Cup, and international matches</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Detailed statistics and team performance analysis</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Timely notifications for betting opportunities</span>
+            </div>
+        </div>
+        
+        <div class="countdown" id="countdown">
+            <div class="countdown-title">Limited Time Offer: Join in next 5 minutes to get free premium tips!</div>
+            <div class="countdown-timer">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="minutes">05</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="btn-container">
+            <a href="https://t.me/+e1mv2wGzJpdiMTFl" class="telegram-btn pulse" target="_blank" id="telegramBtn">
+                <i class="fab fa-telegram"></i> Join Telegram Channel
+            </a>
+        </div>
+        
+        <div class="disclaimer">
+            <p>Disclaimer: Cricket predictions are for informational purposes only. We do not promote or encourage illegal betting. Users must comply with local laws and regulations regarding sports betting. Predictions are not guaranteed and past performance does not indicate future results.</p>
+        </div>
+    </div>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        
+        // Initialize with your Pixel ID
+        fbq('init', '1101019574797569');
+        
+        // Track PageView
+        fbq('track', 'PageView');
+        
+        // Function to track button click as a conversion
+        function trackConversion() {
+            fbq('track', 'Lead');
+        }
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none" 
+             src="https://www.facebook.com/tr?id=1101019574797569&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+
+    <script>
+        // Countdown Timer
+        function startCountdown() {
+            const countdownElement = document.getElementById('countdown');
+            const minutesElement = document.getElementById('minutes');
+            const secondsElement = document.getElementById('seconds');
+            
+            // Show countdown
+            countdownElement.style.display = 'block';
+            
+            let minutes = 5;
+            let seconds = 0;
+            
+            const countdownInterval = setInterval(() => {
+                if (seconds === 0) {
+                    if (minutes === 0) {
+                        clearInterval(countdownInterval);
+                        // When countdown finishes, change button text
+                        document.getElementById('telegramBtn').innerHTML = '<i class="fab fa-telegram"></i> Limited Offer Expired - Join Now!';
+                        return;
+                    }
+                    minutes--;
+                    seconds = 59;
+                } else {
+                    seconds--;
+                }
+                
+                // Update display
+                minutesElement.textContent = minutes.toString().padStart(2, '0');
+                secondsElement.textContent = seconds.toString().padStart(2, '0');
+            }, 1000);
+        }
+        
+        // Start countdown when page loads
+        window.addEventListener('load', startCountdown);
+        
+        // Animated counter for stats
+        function animateCounter(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = value + (element.id === 'memberCount' ? '+' : '%');
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+        
+        // Animate stats when they come into view
+        const observerOptions = {
+            threshold: 0.5
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const memberCount = document.getElementById('memberCount');
+                    const accuracyRate = document.getElementById('accuracyRate');
+                    const winRate = document.getElementById('winRate');
+                    
+                    // Animate counters
+                    animateCounter(memberCount, 0, 9500, 2000);
+                    animateCounter(accuracyRate, 0, 92, 1500);
+                    animateCounter(winRate, 0, 85, 1500);
+                    
+                    // Stop observing after animation
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Observe stats container
+        const statsContainer = document.querySelector('.stats');
+        observer.observe(statsContainer);
+        
+        // Track conversion when button is clicked
+        document.getElementById('telegramBtn').addEventListener('click', function() {
+            // Track conversion in Facebook Pixel
+            trackConversion();
+            
+            // Optional: Add a slight delay to ensure tracking fires before redirect
+            setTimeout(() => {
+                // The link will naturally redirect, so we don't need to do anything here
+            }, 200);
+        });
+        
+        // Add some interactive hover effects
+        const featureItems = document.querySelectorAll('.feature-item');
+        featureItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(10px)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+            });
+        });
+    </script>
+</body>
+</html>
